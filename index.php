@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <?php
-  $BDProductos = array( 
-    array(1, 2, 3, 4, 5),                                       //El ID
-    array("Blusa", "Lentes", "Playera", "Pantalón", "Vestido"), //La Descripción
-    array(100, 350, 200, 420, 250),                             //El Precio
-    array("Dama", "Caballero", "Caballero", "Dama", "Dama"));   //Categoría
-  $iProductos = 5; //Indica el No. de Productos
-
-  $BDAlmacen = array( 
-    array(1, 2, 3, 4, 5), //El IDProducto
-    array(0,10, 5,15, 3)); //Las Existencias
-
-  $iAlmacen = 2; //El No. de existencias
+ $BDProductos = array(0,"CERO",0,"");
+ $i=0; $iProductos=1; 
+ $filas=file('archivo.txt'); 
+ 
+ foreach($filas as $value){
+    list($id, $producto, $precio, $categoria) = explode(",", $value);
+    array_push($BDProductos, $id);
+    array_push($BDProductos, $producto);
+    array_push($BDProductos, $precio);
+    array_push($BDProductos, $categoria);
+    $iProductos++;
+  }
   $BDVentas = array(
     array(2,3), //El IDProducto
     array(2,1), //La Cantidad
@@ -72,9 +72,12 @@
 							<a href="index.php"><img src="images/home/logo.png" alt="" /></a>
 						</div>						
 					</div>
+					<H3>SOFTWARE PUNTO DE VENTA</H3>
 					<div class="col-sm-8">
+						Por:Martinez Navarro 
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
+								<li><a href="Agregarproducto.php" target="_blank"><i class="fa fa-plus"></i>Agregar</a></li>
 								<li><a href="checkout.php"><i class="fa fa-crosshairs"></i> Pagar</a></li>
 								<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
 								<li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
@@ -168,6 +171,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title"><a href="#">Damas</a></h4>
+									<h4 class="panel-title"><a href="#">Niños</a></h4>
 -<h4 class="panel-title"><a href="#">Caballeros</a></
 h4>
 									
@@ -186,22 +190,23 @@ h4>
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Catálogo de Productos</h2>
 						<?php
-   for ($i=0; $i< $iProductos;$i++){      
+						$n=4;
+   for ($i=1; $i< $iProductos;$i++){      
 ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
 											<?php
-$img = $BDProductos [0][$i];
+$img = $BDProductos [$n];
 ?>
 <img src="images/home/<?php echo $img;?>
-.jpg" alt="" width="210" height="180"/>
+.jpg" alt="" width="210" height="180" alt=""/>
 <h2>
-<?php echo "$".$BDProductos [2] [$i];?>
+<?php echo "$".$BDProductos [$i+2];?>
 </h2>
 <p> 
-<?php echo $BDProductos [1] [$i];  ?>
+<?php echo $BDProductos [$i+1];  ?>
 </p>
 											<img src="images/home/product1.jpg" alt="" />
 											<h2>$56</h2>
@@ -210,19 +215,21 @@ $img = $BDProductos [0][$i];
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<h2><?php echo "$".$BDProductos [2]
-[$i];?></h2>
-<p><?php echo $BDProductos [1][$i];?></p>
+												<h2><?php echo "$".$BDProductos [$n+1];?></h2>
+<p><?php echo $BDProductos [$n+2];?></p>
 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
 												<h2>$57</h2>
 												<p>Producto 1</p>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
+
 											</div>
 										</div>
 								</div>								
 							</div>
 						</div>
-						-<?php } ?>
+						-<?php 
+$n+=4;
+					} ?>
 						
 					</div><!--features_items-->
 					
@@ -240,7 +247,20 @@ $img = $BDProductos [0][$i];
 												<div class="productinfo text-center">
 													<img src="images/home/recommend1.jpg" alt="" />
 													<h2>$50</h2>
-													<p>Producto Esp 1</p>
+													<p>area niños</p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="images/home/recommend2.jpg" alt="" />
+													<h2>$50</h2>
+													<p>area niños</p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
 												</div>
 												
