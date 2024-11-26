@@ -12,6 +12,12 @@
     array_push($BDProductos, $categoria);
     $iProductos++;
   }
+
+  $BDAlmacen = array( 
+    array(1, 2, 3, 4, 5,6,7), //El IDProducto
+    array(0,10, 5,15, 3,7,5)); //Las Existencias
+
+  $iAlmacen = 2; //El No. de existencias
   $BDVentas = array(
     array(2,3), //El IDProducto
     array(2,1), //La Cantidad
@@ -72,12 +78,9 @@
 							<a href="index.php"><img src="images/home/logo.png" alt="" /></a>
 						</div>						
 					</div>
-					<H3>SOFTWARE PUNTO DE VENTA</H3>
 					<div class="col-sm-8">
-						Por:Martinez Navarro 
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="Agregarproducto.php" target="_blank"><i class="fa fa-plus"></i>Agregar</a></li>
 								<li><a href="checkout.php"><i class="fa fa-crosshairs"></i> Pagar</a></li>
 								<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
 								<li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
@@ -199,28 +202,26 @@ h4>
 										<div class="productinfo text-center">
 											<?php
 $img = $BDProductos [$n];
+$productob = $BDProductos[$n+1];
+$preciob = $BDProductos[$n+2];
 ?>
 <img src="images/home/<?php echo $img;?>
 .jpg" alt="" width="210" height="180" alt=""/>
 <h2>
-<?php echo "$".$BDProductos [$i+2];?>
+<?php echo $productob;?>
 </h2>
 <p> 
-<?php echo $BDProductos [$i+1];  ?>
+<?php echo $preciob;  ?>
 </p>
-											<img src="images/home/product1.jpg" alt="" />
-											<h2>$56</h2>
-											<p>Producto 1</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
+											
+											<a href= " cart.php?producto=<?php echo $productob;?>&precio=<?php echo $preciob;?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<h2><?php echo "$".$BDProductos [$n+1];?></h2>
-<p><?php echo $BDProductos [$n+2];?></p>
-<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
-												<h2>$57</h2>
-												<p>Producto 1</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
+												<h2><?php echo "$".$preciob;?></h2>
+<p><?php echo $productob;?></p>
+<a href= " cart.php?producto=<?php echo $productob;?>&precio=<?php echo $preciob;?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
+
 
 											</div>
 										</div>
